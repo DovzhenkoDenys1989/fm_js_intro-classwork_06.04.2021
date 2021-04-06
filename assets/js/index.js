@@ -23,11 +23,12 @@ for(let i = 0; i < 10; i++){
   numsArr.push(getRandomIntInclusive(100, 200));
 }
 
-function User(firstName, lastName, email, age, isMale, isSubscribed = false){
+function User(firstName, lastName, email, age, nationality, isMale, isSubscribed = false){
   this.firstName = firstName;
   this.lastName = lastName;
   this.email = email;
   this.age = age;
+  this.nationality = nationality;
   this.isMale = isMale;
   this.isSubscribed = isSubscribed;
 }
@@ -55,6 +56,7 @@ function getRandomUsers(amount){
         `Surname${i}`,//lastName
         `user${i}@gmail.com`,//email
         getRandomIntInclusive(12, 50),//age
+        getRandomNationality(),//nationality
         Math.random() < 0.5,//isMale
         Math.random() < 0.5,//isSubscribed //3.
 
@@ -62,6 +64,10 @@ function getRandomUsers(amount){
     );
   }
   return usersArray;
+}
+
+function getRandomNationality(){
+ return NATIONALITIES[getRandomIntInclusive(0, NATIONALITIES.length - 1)];
 }
 
 
